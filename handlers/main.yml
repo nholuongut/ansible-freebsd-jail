@@ -1,0 +1,65 @@
+---
+# handlers freebsd_jail
+
+# ezjail
+
+- name: enable and start ezjail
+  ansible.builtin.service:
+    name: "{{ bsd_ezjail_service }}"
+    state: started
+    enabled: true
+
+- name: disable and stop ezjail
+  ansible.builtin.service:
+    name: "{{ bsd_ezjail_service }}"
+    state: stopped
+    enabled: false
+
+- name: start ezjail
+  ansible.builtin.service:
+    name: "{{ bsd_ezjail_service }}"
+    state: started
+
+- name: stop ezjail
+  ansible.builtin.service:
+    name: "{{ bsd_ezjail_service }}"
+    state: stopped
+
+- name: restart ezjail
+  ansible.builtin.service:
+    name: "{{ bsd_ezjail_service }}"
+    state: restarted
+  when: bsd_ezjail_enable|bool
+
+# jail
+
+- name: enable and start jail
+  ansible.builtin.service:
+    name: "{{ bsd_jail_service }}"
+    state: started
+    enabled: true
+
+- name: disable and stop jail
+  ansible.builtin.service:
+    name: "{{ bsd_jail_service }}"
+    state: stopped
+    enabled: false
+
+- name: start jail
+  ansible.builtin.service:
+    name: "{{ bsd_jail_service }}"
+    state: started
+
+- name: stop jail
+  ansible.builtin.service:
+    name: "{{ bsd_jail_service }}"
+    state: stopped
+
+- name: restart jail
+  ansible.builtin.service:
+    name: "{{ bsd_jail_service }}"
+    state: restarted
+  when: bsd_jail_enable|bool
+
+# EOF
+...
